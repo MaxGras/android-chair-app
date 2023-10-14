@@ -23,12 +23,7 @@ const chairSlice = createSlice({
             chairAdapt.removeOne(state,idDeleted);
       
         },
-        addOne(state,action){
-           const newAdding = action.payload;
      
-           chairAdapt.addOne(state,newAdding); 
-        
-        },
         editOne(state,action){
             const newEditing = action.payload;
             const idEdit = action.payload.id;
@@ -67,7 +62,7 @@ export const getProductsList = createAsyncThunk(
     async () => {
         const response = await fetch('https://6525afeb67cfb1e59ce79c10.mockapi.io/chairs/');
         const products = await response.json();
-       
+      
         return products;
     }
 );
@@ -78,4 +73,4 @@ export const {
     selectIds: selectChairIds
 
 } = chairAdapt.getSelectors(state => state.chairs);
-export const {deleteOne,editOne,addOne,addSortingState} = chairSlice.actions;
+export const {addSortingState} = chairSlice.actions;
