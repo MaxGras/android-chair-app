@@ -9,15 +9,25 @@ export const cartSlice = createSlice({
         addOne: (state,action)=>{
           
             state.push(action.payload);
-         
+           
         },
         deleteOne: (state, action) => {
+           
             const itemId = action.payload;
-            state.cartValue = state.cartValue.filter(item => item.id !== itemId);
+         
+            const newState = state.filter(item => item.id !== itemId);
+          return  newState;
         },
+        setCount:(state,action)=>{
+            const {id,count} = action.payload;
+            const item = state.find(item => item.id === id);
+            if(item)
+            item.count = count;
+            
+        }
        
     }
 })
 
-export const { addOne, deleteOne } = cartSlice.actions;
+export const { addOne, deleteOne,setCount } = cartSlice.actions;
 export default cartSlice.reducer;

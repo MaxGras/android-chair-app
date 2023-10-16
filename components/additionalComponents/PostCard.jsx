@@ -1,20 +1,18 @@
 import { useSelector, useDispatch } from "react-redux"
+import { useEffect } from "react"
 import { selectChairById} from "../features/chairSlice"
 import { addOne } from "../features/cartSlice"
+
+
 import { View, Text, Image,StyleSheet } from "react-native"
 import { Button} from "@rneui/base"
-import { useState } from "react"
+
+import CustomButtonAdded from "./CustomButtonAdded"
 export default function PostCard({ id,  navigation }) {
-    const dispatch = useDispatch();
+
     const chair = useSelector((state)=>selectChairById(state,id));
-    const carts = useSelector(state=>state.cart);
-    const [isAdded,setIsAdded] = useState(false);
-    const handlePressAdd = ()=>{
-        if(!carts.some(item=>item.id ===id)){
-            dispatch(addOne({id: id,count: 0}))
-            setIsAdded(true);
-        }
-    }
+ 
+
 
     const style = StyleSheet.create({
         container:{
@@ -58,14 +56,7 @@ export default function PostCard({ id,  navigation }) {
             <Text>Price: {chair.price}</Text>
             <View style={style.buttonContainer}>
                 <Button containerStyle={{borderRadius: 27}} buttonStyle={{paddingVertical: 15, paddingHorizontal: 30}} onPress ={()=> navigation.navigate("SinglePost",{id:id})} title="View"></Button>
-                <Button 
-                disabledStyle={{backgroundColor:"#0a4765"}} 
-                disabledTitleStyle={{color:"#FFFFFF"}} 
-                containerStyle={{borderRadius: 27}} 
-                buttonStyle={{paddingVertical: 15, paddingHorizontal: 30}} 
-                disabled={isAdded} 
-                onPress={handlePressAdd} 
-                title={isAdded? "Added": "Add"}></Button>
+                 <CustomButtonAdded id={id}></CustomButtonAdded>
             </View>
         </View>
     )

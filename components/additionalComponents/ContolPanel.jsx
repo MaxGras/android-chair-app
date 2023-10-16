@@ -30,6 +30,7 @@ export default function ControlPanel() {
             <Button
                 title="Select Sorting"
                 onPress={toggleDiaglog}
+                containerStyle={{height:"auto"}}
 
             />
         </View>

@@ -2,13 +2,16 @@
 import { Text, View } from "react-native";
 import { useSelector } from "react-redux";
 import { selectChairById } from "../features/chairSlice";
-import { Button, Image } from "@rneui/base";
+import {  Image } from "@rneui/base";
 import { StyleSheet } from "react-native";
+import CustomButtonAdded from "../additionalComponents/CustomButtonAdded";
 
 export default function SinglePost({ route }) {
     const { id } = route.params;
     const chairSelected = useSelector((state) => selectChairById(state, id));
     const colorForChair = chairSelected.color.toLowerCase();
+
+
     const styles = StyleSheet.create({
         container: {
             display: "flex",
@@ -53,6 +56,8 @@ export default function SinglePost({ route }) {
 
     })
 
+
+
     return (
         <View style={styles.container}>
             <Image style={styles.image} source={{ uri: chairSelected.imageUrl }}></Image>
@@ -65,9 +70,7 @@ export default function SinglePost({ route }) {
                     <Text style={styles.anotherTextStyle}>Weight: {chairSelected.weight}</Text>
                 
             </View>
-               
-                <Button containerStyle={{width:"100%", borderRadius: 27}} buttonStyle={{padding: 15}}  title="Add To Cart"></Button>
-                
+               <CustomButtonAdded id={id}></CustomButtonAdded>
         </View>
     )
 
