@@ -8,6 +8,7 @@ import { getProductsList } from "../features/chairSlice";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SinglePost from "./SinglePost"
 import CartScreen from "./CartScreen";
+import GeoScreen from "./GeoScreen";
 export default function Navigation() {
   
     const Tab = createBottomTabNavigator();
@@ -58,7 +59,7 @@ useEffect(() => {
             })}>
                 <Tab.Screen name={homeName} component={Home}/>
                 <Tab.Screen name={cartName} component={CartScreen}/>
-                <Tab.Screen name={locationName} component={HomeScreen}/>
+                <Tab.Screen name={locationName} component={GeoScreen}/>
                 <Tab.Screen name={userName} component={HomeScreen}/>
             </Tab.Navigator>
             
