@@ -6,6 +6,9 @@ import { useEffect } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
 import { getProductsList } from "../features/chairSlice";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import UserAccount from "./UserAccount";
+import UserSignUp from "./UserSignUp";
+import UserScreen from "./UserScreen";
 import SinglePost from "./SinglePost"
 import CartScreen from "./CartScreen";
 import GeoScreen from "./GeoScreen";
@@ -41,6 +44,15 @@ useEffect(() => {
 
         )
     }
+    function UserLogin(){
+        return(
+            <Stack.Navigator>
+                 <Stack.Screen name="UserScreen" component={UserScreen} options={{ headerShown: false }}></Stack.Screen>
+                <Stack.Screen name="UserAccount" component={UserAccount} options={{ headerShown: false }}></Stack.Screen>
+                <Stack.Screen name="UserSignUp" component={UserSignUp} options={{ headerShown: false }}></Stack.Screen>
+            </Stack.Navigator>
+        )
+    }
 
 
     return (
@@ -60,7 +72,7 @@ useEffect(() => {
                 <Tab.Screen name={homeName} component={Home}/>
                 <Tab.Screen name={cartName} component={CartScreen}/>
                 <Tab.Screen name={locationName} component={GeoScreen}/>
-                <Tab.Screen name={userName} component={HomeScreen}/>
+                <Tab.Screen name={userName} component={UserLogin}/>
             </Tab.Navigator>
             
         </NavigationContainer>

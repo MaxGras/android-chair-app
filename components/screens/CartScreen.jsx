@@ -4,10 +4,12 @@ import { FlatList } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import CartCard from "../additionalComponents/CartCard";
 import { Button } from "@rneui/base";
+
 export default function CartScreen() {
     const cartOfChairs = useSelector(state=> state.cart);
-  
-
+    
+        
+    
     return (
         <View>
               {cartOfChairs.length === 0 ? 
@@ -19,7 +21,7 @@ export default function CartScreen() {
               )
               
               :(<>
-                 <Button title={"Make an order"}>Make an order</Button>
+                 <Button onClick={handleClickMakeOrder} title={"Make an order"}>Make an order</Button>
               <FlatList
               data={cartOfChairs}
               renderItem={({ item }) => (
