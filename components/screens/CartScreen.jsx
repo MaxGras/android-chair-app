@@ -8,7 +8,7 @@ import { Button } from "@rneui/base";
 export default function CartScreen() {
     const cartOfChairs = useSelector(state=> state.cart);
     
-        
+
     
     return (
         <View>
@@ -21,7 +21,7 @@ export default function CartScreen() {
               )
               
               :(<>
-                 <Button onClick={handleClickMakeOrder} title={"Make an order"}>Make an order</Button>
+                 <Button title={"Make an order"}>Make an order</Button>
               <FlatList
               data={cartOfChairs}
               renderItem={({ item }) => (
